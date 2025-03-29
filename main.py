@@ -35,45 +35,40 @@ async def send_welcome_message(update: Update, context: ContextTypes.DEFAULT_TYP
     logger.info(f"Join request from {user.full_name} in {chat.title}")
 
     welcome_text = f"""
-👋 Hi {user.first_name}!
+👋 Hey {user.first_name}, Welcome to 👑 *{chat.title}* 👑  
 
-Welcome to 👑 *{chat.title}* 👑 
+🔥 You’ve just joined the elite trading community of **Wayne Traders** – where success is the only option! 🔥  
 
-🏆 Join our VVIP and Get daily Sureshots 🏆 
+🏆 **Join our VVIP and receive daily sureshots!** 🏆  
 
-〰〰〰〰〰〰〰〰〰〰〰〰〰〰
+〰〰〰〰〰〰〰〰〰〰〰〰〰〰  
 
-▪️ 8–15 accurate signals (96% win rate)
+🚀 **Why choose Wayne Traders?**  
+▪️ **8–15 accurate signals daily (96% win rate)**  
+▪️ **Non-MTG signals every day 🦁**  
+▪️ **Fast deposit & withdrawal ♻️**  
+▪️ **Exclusive giveaways & winning strategies 📊**  
+▪️ **24/7 personal support ✅**  
+▪️ **Access to my $1000 trading course for FREE ✅**  
+▪️ **Instant refund on any signal loss ✅**  
 
-▪️ Get Non MTG signals everyday 🦁
+💵 **Start making profits today – don't miss out!** 💵  
 
-▪️ Fast deposit & withdrawal ♻️
+〰〰〰〰〰〰〰〰〰〰〰〰〰〰  
 
-▪️ Free giveaways & strategies 📊
+(1) **Register from this link ⬇️**  
+👉 [Sign Up Here](https://bit.ly/WayneFreeSignals)  
 
-▪️ Personal support anytime ✅
+(2) **Deposit a minimum of $50 or above 💱**  
 
-▪️ My personal 1000$ course free ✅
+(3) **Send your Trader ID to:**  
+👨‍💼 [@Wayne_Trader01](https://t.me/Wayne_Trader01) ✅  
 
-▪️ If any signals loss instant refund ✅
-
-💵 Start making profit today 💵
-
-〰〰〰〰〰〰〰〰〰〰〰〰〰〰
-
-(1) Register from this link ⬇️
-
-👉 https://broker-qx.pro/sign-up/?lid=1231115
-
-(2) Deposit minimum $30 or above 💱
-
-(3) Send your Trader ID : @vallyadmin ✅️
-
-𝗟𝗲𝘁'𝘀 𝗴𝗿𝗼𝘄 𝘁𝗼𝗴𝗲𝘁𝗵𝗲𝗿 😎 🤝
+🔗 **Let’s grow together and achieve financial freedom! 😎 🤝**  
 """
 
     keyboard = [
-        [InlineKeyboardButton("👨‍💼 Admin", url="https://t.me/vallyadmin?text=Hello%F0%9F%91%8B%20Vally%20Trader%2C%20I%20want%20to%20Join%20your%20VVIP")]
+        [InlineKeyboardButton("👨‍💼 Admin", url="https://t.me/Wayne_Trader01?text=Hello%F0%9F%91%8B%20Wayne%20Trader%2C%20I%20want%20to%20Join%20your%20VVIP")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -99,15 +94,22 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         # Send the start message
         start_message = f"""
-👋 Hello {user.first_name}
+👋 Hey {user.first_name}, Welcome!  
 
-🔥 Welcome To “Wayne Traders” 🔥
+🔥 You’ve just unlocked the gateway to **Wayne Traders** – your ticket to financial success! 🔥  
 
-✅ This Bot Will Lead You How You Can Make $300 To $600 Per Day For Free.
+💰 Ready to make $300 to $600 per day for FREE? 💰  
 
-📌 Start The Bot To Join Our Free Telegram Channel.
+🚀 This bot will guide you step by step to achieve consistent profits.  
 
-😇 Select The Option Below.
+🔹 Join our exclusive trading community
+🔹 Get expert insights & winning strategies
+🔹 Start earning like a pro!
+
+📌 Need assistance? Our admin is here to help!  
+👨‍💼 Admin Contact:** [@Wayne_Trader01](https://t.me/Wayne_Trader01)  
+
+👇 Click the button below to join our free Telegram channel now!  
 """
 
         keyboard = [[InlineKeyboardButton("🔥 JOIN CHANNEL 🔥", url="https://t.me/+VMf10CU1Qf9mOTA1")]]
