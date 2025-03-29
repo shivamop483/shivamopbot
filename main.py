@@ -49,8 +49,6 @@ async def send_welcome_message(update: Update, context: ContextTypes.DEFAULT_TYP
 ▪️ **Fast deposit & withdrawal ♻️**  
 ▪️ **Exclusive giveaways & winning strategies 📊**  
 ▪️ **24/7 personal support ✅**  
-▪️ **Access to my $1000 trading course for FREE ✅**  
-▪️ **Instant refund on any signal loss ✅**  
 
 💵 **Start making profits today – don't miss out!** 💵  
 
