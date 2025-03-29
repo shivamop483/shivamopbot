@@ -116,9 +116,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="Markdown",
         reply_markup=reply_markup
     )
-            logger.info(f"Sent start message to {user.full_name}")
-    except Exception as e:
-        logger.error(f"Failed to send start message to {user.full_name}: {e}")
 
 # ✅ HTTP health check endpoint
 async def handle_health(request):
