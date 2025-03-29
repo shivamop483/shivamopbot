@@ -116,20 +116,66 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="Markdown",
         reply_markup=reply_markup
     )
+            logger.info(f"Sent start message to {user.full_name}")
+    except Exception as e:
+        logger.error(f"Failed to send start message to {user.full_name}: {e}")
+
+# ✅ HTTP health check endpoint
+async def handle_health(request):
+    return web.Response(text="Bot is alive and running! 🚀")
+
+# ✅ Telegram webhook handler
+async def handle_telegram_webhook(request):
+    try:
+        data = await request.json()
+        update = Update.de_json(data, app.bot)
+        await app.process_update(update)
+    except Exception as e:
+        logger.error(f"Error processing update: {e}")
+    return web.Response(text="OK")
+
+# ✅ Run the aiohttp web server
+async def run_web_server():
+    port = int(os.environ.get('PORT', 10000))
+    web_app = web.Application()
+    web_app.router.add_get('/', handle_health)
+    web_app.router.add_post(WEBHOOK_PATH, handle_telegram_webhook)
+    runner = web.AppRunner(web_app)
+    await runner.setup()
+    site = web.TCPSite(runner, '0.0.0.0', port)
+    await site.start()
+    logger.info(f"HTTP server running on port {port}")
 
 # ✅ Main function
 async def main():
     global app
     app = ApplicationBuilder().token(BOT_TOKEN).build()
-    app.add_handler(CommandHandler("start", start))
-    app.add_handler(ChatJoinRequestHandler(handle_join_request))
-    app.add_handler(ChatMemberHandler(handle_member_join, ChatMemberHandler.CHAT_MEMBER))
-    await app.initialize()
-    await app.start()
-    await app.bot.set_webhook(WEBHOOK_URL)
-    await asyncio.Event().wait()
 
+    # ✅ Register handlers
+    app.add_handler(CommandHandler("start", start))  # Start message
+    app.add_handler(ChatJoinRequestHandler(send_welcome_message))  # Welcome message on join request
+    app.add_handler(ChatMemberHandler(handle_member_status, ChatMemberHandler.CHAT_MEMBER))
+
+    logger.info("Starting bot and setting webhook...")
+
+    await app.initialize()
+    await app.bot.set_webhook(WEBHOOK_URL)
+    await app.start()
+
+    # ✅ Start web server to receive webhook updates
+    await run_web_server()
+
+    # ✅ Keep running
+    stop_event = asyncio.Event()
+    await stop_event.wait()
+
+    # ✅ Graceful shutdown
+    await app.stop()
+    await app.shutdown()
+
+# ✅ Entry point
 if __name__ == '__main__':
     if sys.platform.startswith('win') and sys.version_info[:2] >= (3, 8):
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
     asyncio.run(main())
