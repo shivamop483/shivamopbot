@@ -34,6 +34,13 @@ async def send_welcome_message(update: Update, context: ContextTypes.DEFAULT_TYP
     chat = update.chat_join_request.chat
     logger.info(f"Join request from {user.full_name} in {chat.title}")
 
+            # ✅ Automatically approve the join request
+    try:
+        await context.bot.approve_chat_join_request(chat_id=chat.id, user_id=user.id)
+        logger.info(f"Approved join request from {user.full_name}")
+    except Exception as e:
+        logger.warning(f"Failed to approve join request from {user.full_name}: {e}")
+
     welcome_text = f"""
 👋 Hey {user.first_name}, Welcome to 👑 *{chat.title}* 👑  
 
@@ -110,7 +117,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 👇 Click the button below to join our free Telegram channel now!  
 """
 
-        keyboard = [[InlineKeyboardButton("🔥 JOIN CHANNEL 🔥", url="https://t.me/+VMf10CU1Qf9mOTA1")]]
+        keyboard = [[InlineKeyboardButton("🔥 JOIN CHANNEL 🔥", url="https://t.me/+xVV7zuUAW4kyMGU1")]]
         reply_markup = InlineKeyboardMarkup(keyboard)
 
         await context.bot.send_message(
