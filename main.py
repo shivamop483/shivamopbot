@@ -11,6 +11,10 @@ from telegram.ext import (
     ContextTypes,
 )
 from aiohttp import web
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # ✅ Configure logging
 logging.basicConfig(
