@@ -1,0 +1,30 @@
+name: Deploy to DigitalOcean VPS
+
+on:
+  push:
+    branches:
+      - main  # or your preferred branch
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /web_apps/shivamopbot
+            git pull
+            docker compose down
+            docker compose build
+            docker compose up -d
