@@ -1,6 +1,13 @@
 services:
-  bot:
+  shivamopbot:
     build: .
     env_file:
       - .env
     restart: unless-stopped
+    networks:
+      - proxied_npm
+
+
+networks:
+  proxied_npm:
+    external: true
