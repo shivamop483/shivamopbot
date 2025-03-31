@@ -66,7 +66,7 @@ async def send_welcome_message(update: Update, context: ContextTypes.DEFAULT_TYP
 〰〰〰〰〰〰〰〰〰〰〰〰〰〰  
 
 (1) **Register from this link ⬇️**  
-👉 [Sign Up Here](https://bit.ly/WayneFreeSignals)  
+👉 [Sign Up Here](https://p.finance/en/register/?utm_campaign=805519&utm_source=affiliate&utm_medium=sr&a=iPVG5gJ0DEf7mz&ac=mrwaynetrader&code=50START)  
 
 (2) **Deposit a minimum of $50 or above 💱**  
 
